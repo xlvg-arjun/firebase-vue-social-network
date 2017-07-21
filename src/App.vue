@@ -5,13 +5,12 @@
       :mini-variant="miniVariant"
       :clipped="clipped"
       v-model="drawer"
-      enable-resize-watcher
     >
       <v-list>
-        <v-list-tile
-          value="true"
+        <v-list-tile 
           v-for="(item, i) in items"
           :key="i"
+          value="true"
         >
           <v-list-tile-action>
             <v-icon light v-html="item.icon"></v-icon>
@@ -23,24 +22,21 @@
       </v-list>
     </v-navigation-drawer>
     <v-toolbar fixed>
-      <v-toolbar-side-icon @click.native.stop="drawer = !drawer" light></v-toolbar-side-icon>
-      <v-btn
+      <v-toolbar-side-icon @click.native.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-btn 
         icon
-        light
         @click.native.stop="miniVariant = !miniVariant"
       >
         <v-icon v-html="miniVariant ? 'chevron_right' : 'chevron_left'"></v-icon>
       </v-btn>
       <v-btn
         icon
-        light
         @click.native.stop="clipped = !clipped"
       >
         <v-icon>web</v-icon>
       </v-btn>
       <v-btn
         icon
-        light
         @click.native.stop="fixed = !fixed"
       >
         <v-icon>remove</v-icon>
@@ -49,7 +45,6 @@
       <v-spacer></v-spacer>
       <v-btn
         icon
-        light
         @click.native.stop="rightDrawer = !rightDrawer"
       >
         <v-icon>menu</v-icon>
@@ -59,7 +54,7 @@
       <v-container fluid>
         <v-slide-y-transition mode="out-in">
           <v-layout column align-center>
-            <img src="/static/v.png" alt="Vuetify.js" class="mb-5">
+            <img src="/public/v.png" alt="Vuetify.js" class="mb-5" />
             <blockquote>
               &#8220;First, solve the problem. Then, write the code.&#8221;
               <footer>

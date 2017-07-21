@@ -1,6 +1,6 @@
 # firebase-social-network
 
-> A firebase based social network making use of Vue.js and Vuetify on the front end.
+> A firebase project with vue on the front end.
 
 ## Build Setup
 
@@ -13,18 +13,6 @@ npm run dev
 
 # build for production with minification
 npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run unit tests
-npm run unit
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
 ```
 
-TODO: Add docs
+For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
