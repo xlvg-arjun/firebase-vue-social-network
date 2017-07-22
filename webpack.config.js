@@ -1,84 +1,239 @@
-var path = require('path')
-var webpack = require('webpack')
+const process = require('process');
 
-module.exports = {
-  entry: './src/main.js',
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
+const stylusAutoprefixer = require('autoprefixer-stylus');
+
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
+
+const extractStyles = process.env.NODE_ENV !== 'development';
+
+const webpack = require('webpack');
+
+const Merge = require('webpack-merge');
+
+const { join } = require('path');
+
+
+const commonConfig = {
+  entry: {
+    index: ['./src/app.js'],
+  },
   output: {
-    path: path.resolve(__dirname, './dist'),
-    publicPath: '/dist/',
-    filename: 'build.js'
+    path: join(__dirname, 'dist'),
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js'
   },
   resolve: {
+    extensions: ['.js', '.json', '.vue', '.html', '.styl'],
     alias: {
-      'public': path.resolve(__dirname, './public')
+      'vue$': 'vue/dist/vue.esm.js',
+      // inherits$: join(__dirname, 'node_modules/inherits')
     }
+  },
+  node: {
+    fs: 'empty',
+    // child_process: 'empty',
   },
   module: {
     rules: [
+
+      {
+        test: /\.js$/,
+        exclude: [
+          join(__dirname, 'node_modules'),
+        ],
+        use: ['babel-loader']
+      },
+
       {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
+          extractStyles,
           loaders: {
-            // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
-            // the "scss" and "sass" values for the lang attribute to the right configs here.
-            // other preprocessors should work out of the box, no loader config like this necessary.
-            'scss': 'vue-style-loader!css-loader!sass-loader',
-            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+            css: ['style-loader', 'css-loader', 'stylus-loader']
           }
-          // other vue-loader options go here
         }
       },
+
       {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/
+        test: /\.html$/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "[name].html",
+            },
+          },
+
+          {
+            loader: "extract-loader",
+          },
+
+          {
+            loader: "html-loader",
+            options: {
+              // attrs: ["img:src", "link:href"],
+              // interpolate: true,
+            },
+          },
+        ],
       },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        loader: 'file-loader',
-        options: {
-          objectAssign: 'Object.assign'
-        }
-      },
+
+
+    ]
+  },
+  plugins: [
+
+    new ExtractTextPlugin('style.css'),
+
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor'
+    }),
+
+    new FriendlyErrorsPlugin()
+  ]
+};
+
+const devConfig = {
+  // devtool: 'cheap-eval-source-map',
+  module: {
+    rules: [
       {
         test: /\.styl$/,
-        loader: ['style-loader', 'css-loader', 'stylus-loader']
+        use: ['style-loader', 'css-loader', 'stylus-loader'],
+      },
+
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        loaders: [
+          'file-loader',
+        ]
       }
     ]
   },
-  resolve: {
-    alias: {
-      'vue$': 'vue/dist/vue.esm.js'
-    }
-  },
-  devServer: {
-    historyApiFallback: true,
-    noInfo: true
-  },
-  performance: {
-    hints: false
-  },
-  devtool: '#eval-source-map'
-}
 
-if (process.env.NODE_ENV === 'production') {
-  module.exports.devtool = '#source-map'
-  // http://vue-loader.vuejs.org/en/workflow/production.html
-  module.exports.plugins = (module.exports.plugins || []).concat([
+  devServer: {
+    contentBase: join(__dirname, "dist"),
+    compress: true,
+    port: 8080,
+    historyApiFallback: true
+  },
+
+  entry: {
+    server: "webpack-dev-server/client?http://localhost:8080/"
+  },
+
+  plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: '"production"'
+        'NODE_ENV': JSON.stringify('development')
       }
     }),
+  ]
+};
+
+const prodConfig = {
+  devtool: 'source-map',
+  module: {
+    rules: [
+      {
+        test: /\.styl$/,
+        use: ExtractTextPlugin.extract({
+          fallback: { loader: 'style-loader' },
+
+          use: ['css-loader', 'stylus-loader']
+        })
+      },
+
+      {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: { loader: 'style-loader' },
+
+          use: ['css-loader']
+        })
+      },
+
+      {
+        test: /\.((html)|(js))$/,
+        enforce: 'pre',
+        exclude: /(node_modules|bower_components|\.spec\.js)/,
+        use: [
+          {
+            loader: 'webpack-strip-block'
+          }
+        ]
+      },
+
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        loaders: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            query: {
+              progressive: true,
+              optimizationLevel: 7,
+              interlaced: false,
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              }
+            }
+          }
+        ]
+      }
+    ],
+  },
+
+  plugins: [
+    //   new UglifyJSPlugin({
+    //   extractComments: true,
+    //   sourceMap: true
+    // })
+
+    new webpack.LoaderOptionsPlugin({
+      test: /\.styl$/,
+      stylus: {
+        // You can have multiple stylus configs with other names and use them
+        // with `stylus-loader?config=otherConfig`.
+        default: {
+          use: [stylusAutoprefixer({ browsers: ['last 3 versions'] })],
+        },
+      },
+    }),
+
+    new ExtractTextPlugin('style.css'),
+
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
+      beautify: false,
+      comments: false,
       compress: {
-        warnings: false
+        warnings: false,
+        drop_console: true,
+        screw_ie8: true
+      },
+    }),
+
+    new webpack.DefinePlugin({
+      'process.env': {
+        'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
-    })
-  ])
-}
+
+    new webpack.optimize.AggressiveMergingPlugin()
+  ]
+};
+
+
+module.exports = (process.env.NODE_ENV === 'development' ? Merge(commonConfig, devConfig) : Merge(commonConfig, prodConfig)); 
