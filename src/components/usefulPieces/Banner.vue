@@ -44,7 +44,7 @@ a.btn
 	color white
 	text-decoration none
 	border 5px ridge silver
-	transition all 0.1s
+	transition all 0.2s ease-in
 	
 
 	&:hover 
