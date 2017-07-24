@@ -6,16 +6,16 @@ import routes from './router';
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-const VueMaterial = require('vue-material');
+// const VueMaterial = require('vue-material');
 
 import 'normalize.css';
-import 'vue-material/dist/vue-material.css';
+// import 'vue-material/dist/vue-material.css';
 
 import './styl/style';
 
 
 Vue.use(VueRouter);
-Vue.use(VueMaterial);
+// Vue.use(VueMaterial);
 // materials.forEach(item => Vue.use(item));
 
 
@@ -48,3 +48,47 @@ new Vue({
 
 import './images/together.jpeg';
 import './images/entrepreneur.jpg';
+
+
+// For making elements fade into view on scroll
+/*
+window.addEventListener('scroll', function(ev) {
+
+   const tired = document.getElementById('tired');
+   const tiredToBottom = tired.getBoundingClientRect().bottom;
+   const aloneCard = document.getElementById('alone');
+
+   const distanceToBottom = window.innerHeight - tiredToBottom;
+
+   if(distanceToBottom > 40){
+     aloneCard.classList.add('reveal');
+   } else {
+     aloneCard.classList.remove('reveal');
+   }
+});
+*/
+
+window.addEventListener('scroll', function(ev) {
+
+  const revealItems = document.querySelectorAll('.toReveal');
+
+  // console.log(revealItems);
+
+  revealItems.forEach(item => {
+
+    const itemToBottom = item.getBoundingClientRect().top;
+
+    const distanceToBottom = window.innerHeight - itemToBottom;
+
+    const clientHeight = item.clientHeight;
+
+    if(distanceToBottom > clientHeight / 2){
+      item.classList.remove('hide');
+      item.classList.add('reveal-two');
+    } else {
+      item.classList.add('hide');
+      item.classList.remove('reveal-two');
+    }
+
+  })
+});

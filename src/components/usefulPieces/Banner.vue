@@ -1,10 +1,12 @@
 <template>
 	<section class="banner content">
 		<div class="information reveal">
-			<h6>Meet New Friends</h6>
-			<h5>The Perfect Co-Founder</h5>
-			<h4>The Ideal Mentor</h4>
-			<h2>Or Even Forge Your Dream Team</h2>
+			<hgroup>
+				<h6>Don't Walk Alone. Come With Us</h6>
+				<h5>Maybe Get Yourself That Perfect Co-Founder</h5>
+				<h4>Meet A Legendary Mentor</h4>
+				<h2>And Forge Your Dream Team</h2>
+			</hgroup>
 			<a class="btn">Get Started</a>
 		</div>
 	</section>
@@ -26,15 +28,33 @@
   background-position center
 	// min-height 30vh
 
+	
+
+
 
 .information
 	font-size 1.25rem
 	margin-top 20vh
-	padding 1rem
+	padding 1rem 10rem
 	width 70%
 	border-radius 1rem
 	background rgba(#000, 0.4)
 	display inline-block
+
+	h6, h4
+		text-align left
+
+	h5, h2
+		text-align right
+
+	// h4
+	// 	text-align left
+	
+	// h2
+	// 	text-align right
+
+	a.btn
+		text-align center
 
 a.btn
 	display inline-block

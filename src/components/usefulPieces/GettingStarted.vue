@@ -2,9 +2,9 @@
   <main class="getting-started content">
     
     <h2>Getting Started</h2>
-    <h3>Tired Of Fighting Alone?</h3>
+    <h3 id="tired">Tired Of Fighting Alone?</h3>
     
-    <div class="alone-card">
+    <div id="alone" class="alone-card hide toReveal">
       <section class="img-container">
         <img src="/images/entrepreneur.jpg" />
       </section>
@@ -68,6 +68,11 @@
     padding 2rem
     // min-width 70%
 
+.alone-card
+  animation 1.5s remove
+
+
+
 @media screen and (max-width 1000px)
 
   // .getting-started
@@ -117,7 +122,10 @@
 </style>
 
 <script>
-export default {
+
+const templateInstance = {
   
 }
+
+export default templateInstance;
 </script>
