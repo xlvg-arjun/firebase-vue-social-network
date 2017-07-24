@@ -83,6 +83,30 @@ const commonConfig = {
         ],
       },
 
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'images/[name].[ext]',
+            },
+          },
+          {
+            loader: 'image-webpack-loader',
+            query: {
+              progressive: true,
+              optimizationLevel: 12,
+              interlaced: false,
+              pngquant: {
+                quality: '65-70',
+                speed: 4
+              }
+            }
+          }
+        ]
+      }
+
 
     ]
   },
@@ -99,7 +123,7 @@ const commonConfig = {
 };
 
 const devConfig = {
-  // devtool: 'cheap-eval-source-map',
+  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -111,18 +135,12 @@ const devConfig = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
-
-      {
-        test: /\.(gif|png|jpe?g|svg)$/i,
-        loaders: [
-          'file-loader',
-        ]
-      }
     ]
   },
 
   devServer: {
     contentBase: join(__dirname, "dist"),
+    // publicPath: '/',
     compress: true,
     port: 8080,
     historyApiFallback: true
@@ -174,24 +192,7 @@ const prodConfig = {
         ]
       },
 
-      {
-        test: /\.(gif|png|jpe?g|svg)$/i,
-        loaders: [
-          'file-loader',
-          {
-            loader: 'image-webpack-loader',
-            query: {
-              progressive: true,
-              optimizationLevel: 7,
-              interlaced: false,
-              pngquant: {
-                quality: '65-90',
-                speed: 4
-              }
-            }
-          }
-        ]
-      }
+      
     ],
   },
 

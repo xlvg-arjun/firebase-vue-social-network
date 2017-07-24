@@ -1,8 +1,7 @@
-import './styl/style';
-
 import './index.html';
 
-import App from './components/app';
+import App from './app.vue';
+import routes from './router';
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
@@ -12,13 +11,18 @@ const VueMaterial = require('vue-material');
 import 'normalize.css';
 import 'vue-material/dist/vue-material.css';
 
+import './styl/style';
+
 
 Vue.use(VueRouter);
 Vue.use(VueMaterial);
 // materials.forEach(item => Vue.use(item));
 
 
-const router = new VueRouter();
+const router = new VueRouter({
+  mode: 'history',
+  routes
+});
 
 new Vue({
     el: '#app-container',
@@ -39,3 +43,7 @@ new Vue({
 })
 
 // import { Component } from 'react';
+
+// IMAGES
+
+import './images/together.jpeg';
