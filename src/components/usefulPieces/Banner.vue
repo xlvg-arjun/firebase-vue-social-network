@@ -14,9 +14,11 @@
 
 .banner
 	color white
-	overflow hidden
+	margin 0
+	// overflow hidden
 	min-height 100vh
-	min-width 99.99vw
+	// min-width 99vw
+	width 100%
 	background-image url('/images/together.jpeg')
   background-size 100%
   background-attachment fixed
@@ -29,6 +31,7 @@
 	font-size 1.25rem
 	margin-top 20vh
 	padding 1rem
+	width 70%
 	border-radius 1rem
 	background rgba(#000, 0.4)
 	display inline-block
@@ -44,14 +47,15 @@ a.btn
 	color white
 	text-decoration none
 	border 5px ridge silver
-	transition all 0.2s ease-in
+	transition all 0.1s ease
 	
 
 	&:hover 
 		background #5d6263
+		// letter-spacing 1px
 		background-image linear-gradient(to bottom, #5d6263, #111212)
 		text-decoration none
-		transform scale(1.2)
+		transform scale(1.02)
 
 
 	

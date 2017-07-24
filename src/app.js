@@ -47,3 +47,4 @@ new Vue({
 // IMAGES
 
 import './images/together.jpeg';
+import './images/entrepreneur.jpg';

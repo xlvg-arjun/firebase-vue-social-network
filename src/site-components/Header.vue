@@ -65,7 +65,7 @@
       height 120%
 
       &:hover
-        background-color rgba(#fff, 0.8)
+        background-color rgba(#fff, 0.2)
   
 
 

@@ -1,5 +1,8 @@
 <template>
-  <Banner></Banner>
+  <div>
+    <Banner></Banner>
+    <GettingStarted></GettingStarted>
+  </div>
 </template>
 
 <style lang="stylus" scoped>
@@ -10,6 +13,7 @@
 <script>
 
 import Banner from '../usefulPieces/Banner';
+import GettingStarted from '../usefulPieces/GettingStarted';
 
 export default {
   data(){
@@ -19,7 +23,8 @@ export default {
   },
 
   components: {
-      Banner
+      Banner,
+      GettingStarted
   }
 }
 </script>
