@@ -14,6 +14,22 @@
         <p>So go ahead and click the registration tab! You have nothing to lose.</p>    
       </section>
     </div>
+
+    <section class="chips-choices">
+
+      <Chip img-src="/images/leader.jpeg">
+
+      </Chip>
+
+      <Chip>
+
+      </Chip>
+
+      <Chip>
+
+      </Chip>
+
+    </section>
   </main>
 </template>
 
@@ -39,10 +55,11 @@
 
 .alone-card
   display flex
-  background-color #aaa
-  border-radius 1rem
+  background-color #fff
+  border-radius 0.8rem
   flex-wrap wrap
   overflow hidden
+  border 4px solid #666
 
   img
     flex 1;
@@ -71,6 +88,18 @@
 .alone-card
   animation 1.5s remove
 
+.chips-choices
+  margin 2rem auto
+  display flex
+  flex-wrap wrap
+  background-color #ababab
+  border-radius 2px
+
+
+  > *
+    flex 1 1 auto
+    margin 0 0.1rem
+    // max-width 33%
 
 
 @media screen and (max-width 1000px)
@@ -123,8 +152,12 @@
 
 <script>
 
+import Chip from './Chip';
+
 const templateInstance = {
-  
+  components: {
+    Chip
+  }
 }
 
 export default templateInstance;

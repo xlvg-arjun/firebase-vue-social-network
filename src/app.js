@@ -48,6 +48,7 @@ new Vue({
 
 import './images/together.jpeg';
 import './images/entrepreneur.jpg';
+import './images/leader.jpeg';
 
 
 // For making elements fade into view on scroll
