@@ -1,5 +1,5 @@
 <template>
-  <div class="chip">
+  <div class="chip toReveal">
     <section class="img-container">
       <img v-bind:src="imgSrc" />
     </section>
@@ -11,28 +11,50 @@
 </template>
 
 <style lang="stylus" scoped>
+@import "../../styl/globals"
 
 .chip
   display flex
   flex-direction column
   border-radius 2px
-  border 4px solid #666
-  flex 1 1 33%
+  margin 1rem 0.5rem
+  // border 4px solid #666
+  // flex 1 1 33%
   // overflow hidden
+  box-shadow 0px 0px 8px #000
 
 .img-container
-  flex 1 1 30%
+  // flex 1 1 30%
+  height 25rem
   display flex
   flex-direction column
   // border-bottom 10px solid #555
+  box-shadow 0px 0px 8px #000
+  margin-bottom 0.5rem
 
   img
-    flex 1 1 auto
-    border-bottom 1px solid #555
+    // flex 0 1 20vh
+    height 100%
+    // border-bottom 10px solid transparent
+  
 
 .text-content
   flex 1 1 70%
   padding 1rem
+  box-shadow 0px 0px 8px #000
+
+
+
+@media screen and (max-width $md)
+  
+ 
+
+  .img-container
+    // flex-direction row
+    flex 1 1;
+    min-height 30rem
+    img
+      min-height none
 
 </style>
 

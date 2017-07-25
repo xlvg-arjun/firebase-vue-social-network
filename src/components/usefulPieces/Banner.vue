@@ -13,6 +13,8 @@
 </template>
 
 <style lang="stylus" scoped>
+@import "../../styl/globals"
+
 
 .banner
 	color white

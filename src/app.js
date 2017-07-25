@@ -49,6 +49,7 @@ new Vue({
 import './images/together.jpeg';
 import './images/entrepreneur.jpg';
 import './images/leader.jpeg';
+import './images/hand.jpeg';
 
 
 // For making elements fade into view on scroll
@@ -69,7 +70,7 @@ window.addEventListener('scroll', function(ev) {
 });
 */
 
-window.addEventListener('scroll', function(ev) {
+function checkOnScroll(ev) {
 
   const revealItems = document.querySelectorAll('.toReveal');
 
@@ -83,7 +84,7 @@ window.addEventListener('scroll', function(ev) {
 
     const clientHeight = item.clientHeight;
 
-    if(distanceToBottom > clientHeight / 2){
+    if(distanceToBottom > clientHeight / 8){
       item.classList.remove('hide');
       item.classList.add('reveal-two');
     } else {
@@ -92,4 +93,11 @@ window.addEventListener('scroll', function(ev) {
     }
 
   })
-});
+}
+
+import { throttle } from 'underscore';
+
+
+const throttleCheck = throttle(checkOnScroll, 700);
+
+window.addEventListener('scroll', throttleCheck);

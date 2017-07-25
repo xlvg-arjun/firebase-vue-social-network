@@ -18,15 +18,21 @@
     <section class="chips-choices">
 
       <Chip img-src="/images/leader.jpeg">
+        <h3>Heading One</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam eos expedita ex vitae ipsa iusto consequuntur? Sed itaque rerum quas ducimus molestias voluptas, earum, magnam, suscipit doloribus ut quam culpa!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem voluptatibus quas obcaecati deserunt magni harum porro quaerat labore repellat neque, tempore ex nam, sit id dolores nemo eius ipsum quis.
+      </Chip>
 
+      <Chip img-src="/images/hand.jpeg">
+        <h3>Heading Two</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam eos expedita ex vitae ipsa iusto consequuntur? Sed itaque rerum quas ducimus molestias voluptas, earum, magnam, suscipit doloribus ut quam culpa!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem voluptatibus quas obcaecati deserunt magni harum porro quaerat labore repellat neque, tempore ex nam, sit id dolores nemo eius ipsum quis.
       </Chip>
 
       <Chip>
-
-      </Chip>
-
-      <Chip>
-
+        <h3>Heading Three</h3>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam eos expedita ex vitae ipsa iusto consequuntur? Sed itaque rerum quas ducimus molestias voluptas, earum, magnam, suscipit doloribus ut quam culpa!
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem voluptatibus quas obcaecati deserunt magni harum porro quaerat labore repellat neque, tempore ex nam, sit id dolores nemo eius ipsum quis.
       </Chip>
 
     </section>
@@ -34,6 +40,7 @@
 </template>
 
 <style lang="stylus" scoped>
+@import "../../styl/globals"
 
 .getting-started
   padding 2rem
@@ -57,18 +64,25 @@
   display flex
   background-color #fff
   border-radius 0.8rem
-  flex-wrap wrap
+  // flex-wrap wrap
   overflow hidden
-  border 4px solid #666
+  // border 4px solid #666
+  box-shadow 0px 0px 8px #000
+
+
 
   img
     flex 1;
 
   .img-container
-    max-width 100%
+    // max-width 100%
+    
     flex 1 1 30%
     display flex
     flex-direction column
+    box-shadow 0px 0px 8px #000
+    margin-right 0.2rem
+
     // max-width 30%
     // float left
     // border-radius 1rem 0 0 1rem
@@ -80,10 +94,11 @@
     // width 30%
 
   .text-content
-    flex 1 1 70%
+    flex 1 1 40rem;
     // width 70%
     padding 2rem
     // min-width 70%
+    box-shadow 0px 0px 8px #000
 
 .alone-card
   animation 1.5s remove
@@ -91,18 +106,24 @@
 .chips-choices
   margin 2rem auto
   display flex
-  flex-wrap wrap
-  background-color #ababab
+  // flex-wrap wrap
+  // background-color #ababab
   border-radius 2px
 
 
   > *
-    flex 1 1 auto
+    flex 1 1 33%
     margin 0 0.1rem
     // max-width 33%
 
 
-@media screen and (max-width 1000px)
+@media screen and (min-width $md)
+  .alone-card
+    max-height 16rem
+
+
+
+@media screen and (max-width $md)
 
   // .getting-started
   //   h2
@@ -114,8 +135,8 @@
 
   .alone-card
     flex-wrap wrap
-    max-width 80%
-    margin 0 auto
+    max-width 65%
+    margin 0 auto 1.5rem
   
     .img-container
       // max-width 50%
@@ -129,7 +150,20 @@
       flex 1 1 100%
       width 100%
 
-@media screen and (max-width 480px)
+
+  .chips-choices
+    // flex-wrap wrap
+    flex-direction column
+    max-width 65%
+    // min-height 10rem
+    background-color inherit
+    margin 0 auto
+    > *
+      flex 1 1 100%
+      margin 1.5rem 0
+      
+
+@media screen and (max-width $sm)
   .getting-started
     padding 2rem 1rem
 
@@ -144,7 +178,9 @@
     width 100%
     border 0;
 
-    
+  
+  .chips-choices
+    max-width none
 
 
 
