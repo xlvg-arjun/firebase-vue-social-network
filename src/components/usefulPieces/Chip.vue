@@ -22,6 +22,12 @@
   // flex 1 1 33%
   // overflow hidden
   box-shadow 0px 0px 8px #000
+  transition all 0.5s ease
+
+
+  &:hover
+    transform scale(1.05)
+  
 
 .img-container
   // flex 1 1 30%

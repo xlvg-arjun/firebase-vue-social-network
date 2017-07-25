@@ -2,7 +2,10 @@
   <main class="getting-started content">
     
     <h2>Getting Started</h2>
-    <h3 id="tired">Tired Of Fighting Alone?</h3>
+
+    <hgroup>
+      <h3 id="tired">Tired Of Fighting Alone?</h3>
+    </hgroup>
     
     <div id="alone" class="alone-card hide toReveal">
       <section class="img-container">
@@ -15,22 +18,32 @@
       </section>
     </div>
 
+    <hgroup>
+      <h3>why join us</h3>
+    </hgroup>
+
     <section class="chips-choices">
 
       <Chip img-src="/images/leader.jpeg">
-        <h3>Heading One</h3>
+        <hgroup>
+          <h3>Heading One</h3>
+        </hgroup>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam eos expedita ex vitae ipsa iusto consequuntur? Sed itaque rerum quas ducimus molestias voluptas, earum, magnam, suscipit doloribus ut quam culpa!
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem voluptatibus quas obcaecati deserunt magni harum porro quaerat labore repellat neque, tempore ex nam, sit id dolores nemo eius ipsum quis.
       </Chip>
 
       <Chip img-src="/images/hand.jpeg">
-        <h3>Heading Two</h3>
+        <hgroup>
+          <h3>Heading Two</h3>
+        </hgroup>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam eos expedita ex vitae ipsa iusto consequuntur? Sed itaque rerum quas ducimus molestias voluptas, earum, magnam, suscipit doloribus ut quam culpa!
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem voluptatibus quas obcaecati deserunt magni harum porro quaerat labore repellat neque, tempore ex nam, sit id dolores nemo eius ipsum quis.
       </Chip>
 
       <Chip>
-        <h3>Heading Three</h3>
+        <hgroup>
+          <h3>Heading Three</h3>
+        </hgroup>
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam eos expedita ex vitae ipsa iusto consequuntur? Sed itaque rerum quas ducimus molestias voluptas, earum, magnam, suscipit doloribus ut quam culpa!
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem voluptatibus quas obcaecati deserunt magni harum porro quaerat labore repellat neque, tempore ex nam, sit id dolores nemo eius ipsum quis.
       </Chip>
@@ -48,16 +61,22 @@
 
   h2, h3
     font-family Liberation-sans, Helvetica, Arial, sans-serif
+    text-transform uppercase
+    display inline-block
 
   h2
-    display inline-block
     font-size 3rem
     color #333
     padding-bottom 2rem
     border-bottom 0.2rem #222 dashed
     
   h3
-    font-size 1.5rem
+    font-size 2rem
+    padding-bottom 1rem
+    border-bottom 1px solid #555
+
+  hgroup
+    display block
 
 
 .alone-card
@@ -68,6 +87,11 @@
   overflow hidden
   // border 4px solid #666
   box-shadow 0px 0px 8px #000
+  transition all 0.5s ease
+
+
+  &:hover
+    transform scale(1.05)
 
 
 

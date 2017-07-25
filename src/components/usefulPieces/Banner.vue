@@ -42,6 +42,7 @@
 	border-radius 1rem
 	background rgba(#000, 0.4)
 	display inline-block
+	box-shadow 0px 0px 8px #bbb
 
 	h6, h4
 		text-align left
