@@ -105,7 +105,15 @@ const commonConfig = {
             }
           }
         ]
-      }
+      },
+
+      {
+        test: /\.(ttf|eot|woff|woff2|otf)$/,
+        loader: 'file-loader',
+        options: {
+          name: 'fonts/[name].[ext]',
+        },
+      },
 
 
     ]
@@ -192,7 +200,7 @@ const prodConfig = {
         ]
       },
 
-      
+
     ],
   },
 

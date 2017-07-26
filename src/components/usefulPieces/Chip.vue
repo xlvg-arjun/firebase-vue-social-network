@@ -31,12 +31,13 @@
 
 .img-container
   // flex 1 1 30%
-  height 25rem
+  // height 25rem
   display flex
   flex-direction column
   // border-bottom 10px solid #555
   box-shadow 0px 0px 8px #000
   margin-bottom 0.5rem
+  min-height 18rem
 
   img
     // flex 0 1 20vh
@@ -49,6 +50,10 @@
   padding 1rem
   box-shadow 0px 0px 8px #000
 
+
+// @media screen and (max-width $md)
+//   .img-container
+//     height 20vh
 
 
 @media screen and (max-width $md)

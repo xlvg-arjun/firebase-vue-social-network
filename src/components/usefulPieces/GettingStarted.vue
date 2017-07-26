@@ -106,6 +106,7 @@
     flex-direction column
     box-shadow 0px 0px 8px #000
     margin-right 0.2rem
+    min-width 28rem
 
     // max-width 30%
     // float left
@@ -120,7 +121,7 @@
   .text-content
     flex 1 1 40rem;
     // width 70%
-    padding 2rem
+    padding 1rem
     // min-width 70%
     box-shadow 0px 0px 8px #000
 
@@ -143,7 +144,9 @@
 
 @media screen and (min-width $md)
   .alone-card
-    max-height 16rem
+    height 20rem
+    font-size 0.9rem
+    line-height 1.7
 
 
 

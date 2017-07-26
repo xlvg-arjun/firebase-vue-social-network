@@ -52,6 +52,12 @@ import './images/leader.jpeg';
 import './images/hand.jpeg';
 
 
+
+// FONTS
+
+import './fonts/quicksand/Quicksand-Light.otf';
+
+
 // For making elements fade into view on scroll
 /*
 window.addEventListener('scroll', function(ev) {
